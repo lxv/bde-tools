@@ -35,5 +35,5 @@ if(CMAKE_HOST_SYSTEM_NAME STREQUAL "FreeBSD")
     set(CMAKE_CXX_COMPILER ${root}/clang++)
     set(CMAKE_C_COMPILER ${root}/clang)
 
-    include("toolchains/darwin/clang-default")
+    include("toolchains/freebsd/clang-default")
 endif()
