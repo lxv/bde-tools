@@ -79,6 +79,13 @@ function(bbs_add_target_thread_flags target scope)
             target_compile_options(${target}
                 ${scope}
                     -pthread)
+    elseif(CMAKE_SYSTEM_NAME STREQUAL "FreeBSD")
+            target_compile_options(${target}
+                ${scope}
+                    -pthread)
+            target_link_options(${target}
+                ${scope}
+                    -pthread)
         endif()
     endif()
 endfunction()
@@ -99,7 +106,6 @@ function(bbs_add_target_rt_flags target scope)
     elseif(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
         target_link_libraries(${target} ${scope} Ws2_32)
     elseif(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
-        target_link_libraries(${target} ${scope} rt stdc++)
     elseif(CMAKE_CXX_COMPILER_ID STREQUAL "AppleClang")
     endif ()
 endfunction()
